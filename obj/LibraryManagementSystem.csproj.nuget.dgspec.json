@@ -1,0 +1,64 @@
+{
+  "format": 1,
+  "restore": {
+    "A:\\ZC\\Library-Management-System\\LibraryManagementSystem.csproj": {}
+  },
+  "projects": {
+    "A:\\ZC\\Library-Management-System\\LibraryManagementSystem.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "A:\\ZC\\Library-Management-System\\LibraryManagementSystem.csproj",
+        "projectName": "LibraryManagementSystem",
+        "projectPath": "A:\\ZC\\Library-Management-System\\LibraryManagementSystem.csproj",
+        "packagesPath": "C:\\Users\\yehia\\.nuget\\packages\\",
+        "outputPath": "A:\\ZC\\Library-Management-System\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\yehia\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

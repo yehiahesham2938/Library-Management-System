@@ -1,0 +1,37 @@
+@page
+@model LibraryManagementSystem.Pages.LostBooks
+@{
+    ViewData["Title"] = "LostBooks";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/adminstyle.css" />
+    <link rel="stylesheet" href="~/css/Navbar.css" />    
+</head>
+<body>
+    <div class="navbar-container">
+    <div class="navbar">
+        <img src="~/images/ZewailCityLogo.png"  class="img img-responsive img-circle center-block" alt="Logo"> 
+        <div class="navbar-btns">
+            <form method="post" asp-page-handler="HomePagePost">
+                <button class="navbar-btn">Home Page</button>
+            </form>
+            <form method="post" asp-page-handler="BorrowPagePost">
+                <button class="navbar-btn"> Borrowed Books </button>
+            </form>
+            <form method="post" asp-page-handler="ReturnedBooksPost">
+                <button class="navbar-btn"> Returned Books </button>
+            </form>
+            <button class="navbar-btn"> Lost Books </button>
+            <a  class="navbar-btn" href="/">Back to Login</a>
+        </div>
+    </div>
+    </div>
+<h1> LostBooks </h1>
+</body>
+</html>

@@ -1,0 +1,88 @@
+﻿@page
+@model LibraryManagementSystem.Pages.AdminModel
+@{
+    ViewData["Title"] = "Administrator";
+    Layout = null; 
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/adminstyle.css" />
+    <link rel="stylesheet" href="~/css/Navbar.css" />
+    <title>Library Management System</title>
+</head>
+<body>
+    <div class="navbar-container">
+    <div class="navbar">
+        <img src="~/images/ZewailCityLogo.png"  class="img img-responsive img-circle center-block" alt="Logo"> 
+        <div class="navbar-btns">
+            <form method="post" asp-page-handler="HomePagePost">
+                <button class="navbar-btn">Home Page</button>
+            </form>
+            <form method="post" asp-page-handler="BorrowPagePost">
+                <button class="navbar-btn"> Borrowed Books </button>
+            </form>
+            <form method="post" asp-page-handler="ReturnedBooksPost">
+                <button class="navbar-btn"> Returned Books </button>
+            </form>
+            <form method="post" asp-page-handler="LostBooksPost">
+                <button class="navbar-btn"> Lost Books </button>
+            </form>
+            <a  class="navbar-btn" href="/">Back to Login</a>
+        </div>
+    </div>
+</div>
+    <div class="container">
+        <div class="section">
+            <h2>Insert Book</h2>
+            <form id="insertBookForm">
+                <div class="form-group">
+                    <label for="title">Book Title*</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="isbn">ISBN*</label>
+                    <input type="text" id="isbn" name="isbn" required>
+                </div>
+                <div class="form-group">
+                    <label for="author">Author*</label>
+                    <input type="text" id="author" name="author" required>
+                </div>
+                <div class="form-group">
+                    <label for="publishedDate">Published Date*</label>
+                    <input type="date" id="publishedDate" name="publishedDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="photo">Photo</label>
+                    <input type="file" id="photo" name="photo">
+                </div>
+                <button type="submit" class="btn">Insert Book</button>
+            </form>
+        </div>
+        <div class="section">
+            <h2>View Books</h2>
+            <ul id="existingBooksList">
+                <!-- Book items will be dynamically added here -->
+            </ul>
+        </div>
+        <div class="section">
+            <h2>Books List</h2>
+            <ul id="bookslist">
+                <!-- Existing book items will be dynamically added here -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('insertBookForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            console.log(formData);
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+</body>
+</html>
