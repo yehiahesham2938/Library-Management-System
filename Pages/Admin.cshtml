@@ -13,28 +13,40 @@
     <link rel="stylesheet" href="~/css/adminstyle.css" />
     <link rel="stylesheet" href="~/css/Navbar.css" />
     <title>Library Management System</title>
+
 </head>
 <body>
     <div class="navbar-container">
-    <div class="navbar">
-        <img src="~/images/ZewailCityLogo.png"  class="img img-responsive img-circle center-block" alt="Logo"> 
-        <div class="navbar-btns">
-            <form method="post" asp-page-handler="HomePagePost">
-                <button class="navbar-btn">Home Page</button>
-            </form>
-            <form method="post" asp-page-handler="BorrowPagePost">
-                <button class="navbar-btn"> Borrowed Books </button>
-            </form>
-            <form method="post" asp-page-handler="ReturnedBooksPost">
-                <button class="navbar-btn"> Returned Books </button>
-            </form>
-            <form method="post" asp-page-handler="LostBooksPost">
-                <button class="navbar-btn"> Lost Books </button>
-            </form>
-            <a  class="navbar-btn" href="/">Back to Login</a>
+        <div class="navbar">
+            <img src="~/images/ZewailCityLogo.png"  class="img img-responsive img-circle center-block" alt="Logo"> 
+            <div class="navbar-btns">
+                <form method="post" asp-page-handler="HomePagePost">
+                    <button class="navbar-btn">Home Page</button>
+                </form>
+                <form method="post" asp-page-handler="BorrowPagePost">
+                    <button class="navbar-btn"> Borrowed Books </button>
+                </form>
+                <form method="post" asp-page-handler="ReturnedBooksPost">
+                    <button class="navbar-btn"> Returned Books </button>
+                </form>
+                <form method="post" asp-page-handler="LostBooksPost">
+                    <button class="navbar-btn"> Lost Books </button>
+                </form>
+                <a  class="navbar-btn" href="/">Back to Login</a>
+                <h6 style="position: absolute; right: -175px;"> Today's Date: </h6>
+                <div id="current_date" style="position: absolute; right: -250px;">
+                    <script>
+                        date = new Date();
+                        year = date.getFullYear();
+                        month = date.getMonth() + 1;
+                        day = date.getDate();
+                        document.getElementById("current_date").innerHTML = month + "/" + day + "/" + year;
+                    </script>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+
     <div class="container">
         <div class="section">
             <h2>Insert Book</h2>
