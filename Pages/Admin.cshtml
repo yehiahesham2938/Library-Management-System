@@ -33,7 +33,7 @@
                     <button class="navbar-btn"> Lost Books </button>
                 </form>
                 <a  class="navbar-btn" href="/">Back to Login</a>
-                <h6 style="position: absolute; right: -190px; font-weight: bold;"> Today's Date: </h6>
+                <h6 style="position: absolute; right: -175px; font-weight: bold;"> Today's Date: </h6>
                 <div id="current_date" style="position: absolute; right: -250px; ">
                     <script>
                         date = new Date();
@@ -74,18 +74,22 @@
                 <button type="submit" class="btn">Insert Book</button>
             </form>
         </div>
-        <div class="section">
-            <h2>View Books</h2>
-            <ul id="existingBooksList">
-                <!-- Book items will be dynamically added here -->
-            </ul>
-        </div>
-        <div class="section">
-            <h2>Books List</h2>
-            <ul id="bookslist">
-                <!-- Existing book items will be dynamically added here -->
-            </ul>
-        </div>
+           <div class="section">
+        <h2>Books List</h2>
+        <ul id="bookslist">
+            <!-- List of clickable books will be dynamically added here -->
+            <li data-book-id="1">Book 1</li>
+            <li data-book-id="2">Book 2</li>
+            <li data-book-id="3">Book 3</li>
+            <!-- Add more book items as needed -->
+        </ul>
+    </div>
+    <div class="section">
+        <h2>View Books</h2>
+        <ul id="existingBooksList">
+            <!-- Selected book details will be displayed here -->
+        </ul>
+    </div>
     </div>
 
     <script>
@@ -94,6 +98,24 @@
             var formData = new FormData(this);
             console.log(formData);
         });
+
+         document.addEventListener('DOMContentLoaded', function() {
+        // Get reference to the books list and existing books list
+        var booksList = document.getElementById('bookslist');
+        var existingBooksList = document.getElementById('existingBooksList');
+
+        // Add click event listener to the books list
+        booksList.addEventListener('click', function(event) {
+            var target = event.target;
+            // Check if the clicked element is a book item
+            if (target.tagName === 'LI') {
+                var bookId = target.dataset.bookId; // Get the book ID
+                // Fetch book details using AJAX (you can use your own method to get book details)
+                // For demonstration purposes, I'm simply updating the existing books list here
+                existingBooksList.innerHTML = '<li>Book ID: ' + bookId + '</li>';
+            }
+        });
+    });
     </script>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 </body>
