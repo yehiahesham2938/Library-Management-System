@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+zQyXEsRKp3ncZtTRHOjDqpfO7DpRuY1ZDAdYAlr/Uk=",
+  "Hash": "jEJg1Zblo78EZL2TRloYNHJvHJiP22xPRbBT8M5vzwk=",
   "Source": "LibraryManagementSystem",
   "BasePath": "_content/LibraryManagementSystem",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\adminstyle.css"
+    },
+    {
+      "Identity": "A:\\ZC\\Library-Management-System\\wwwroot\\css\\Button.css",
+      "SourceId": "LibraryManagementSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "A:\\ZC\\Library-Management-System\\wwwroot\\",
+      "BasePath": "_content/LibraryManagementSystem",
+      "RelativePath": "css/Button.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Button.css"
     },
     {
       "Identity": "A:\\ZC\\Library-Management-System\\wwwroot\\css\\Navbar.css",

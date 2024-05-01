@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\LibraryManagementSystem.bundle.scp.css"
     },
     {
+      "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\css\\Button.css",
+      "PackagePath": "staticwebassets\\css\\Button.css"
+    },
+    {
       "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\css\\Navbar.css",
       "PackagePath": "staticwebassets\\css\\Navbar.css"
     },
