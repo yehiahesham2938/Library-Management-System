@@ -31,6 +31,16 @@
                 <button class="navbar-btn"> Lost Books </button>
             </form>
             <a  class="navbar-btn" href="/">Back to Login</a>
+            <h6 style="position: absolute; right: -184px; font-weight: bold;"> Today's Date: </h6>
+                <div id="current_date" style="position: absolute; right: -250px; ">
+                    <script>
+                        date = new Date();
+                        year = date.getFullYear();
+                        month = date.getMonth() + 1;
+                        day = date.getDate();
+                        document.getElementById("current_date").innerHTML = month + "/" + day + "/" + year;
+                    </script>
+                </div>
         </div>
     </div>
     </div>
