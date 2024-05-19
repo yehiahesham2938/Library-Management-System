@@ -13,37 +13,10 @@
     <title>Borrow Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/adminstyle.css" />
+    <link rel="stylesheet" href="~/css/borrowing.css" />
     <link rel="stylesheet" href="~/css/Navbar.css" />
     <link rel="stylesheet" href="~/css/Button.css"/>
-        <style>
-        .container {
-            display: flex;
-            justify-content: space-between; /* Align items with space between them */
-            align-items: flex-start; /* Align items to the start of the container */
-        }
-
-        .form-container {
-            width: 45%; /* Adjust the width of the form container */
-        }
-
-        .table-container {
-            width: 45%; /* Adjust the width of the table container */
-        }
-
-        .table-responsive {
-            max-height: 80vh; /* Limit the height of the table to ensure it's scrollable */
-            overflow-y: auto; /* Enable vertical scrolling */
-        }
-
-        /* Adjust styles for better appearance */
-        .form-container, .table-container {
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-    </style>
+    
 </head>
 <body>
     <div class="navbar-container">
@@ -113,8 +86,7 @@
             </div>
             <button class="button-64" type = "submit" role="button"><span class="text">Add Borrowed Book</span></button>
         </form>
-        
-    <!-- Display borrowed books -->
+        <div class="spacer"></div>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>

@@ -9,12 +9,20 @@
       "PackagePath": "staticwebassets\\css\\Button.css"
     },
     {
+      "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\css\\DisplayBooks.css",
+      "PackagePath": "staticwebassets\\css\\DisplayBooks.css"
+    },
+    {
       "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\css\\Navbar.css",
       "PackagePath": "staticwebassets\\css\\Navbar.css"
     },
     {
       "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\css\\adminstyle.css",
       "PackagePath": "staticwebassets\\css\\adminstyle.css"
+    },
+    {
+      "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\css\\borrowing.css",
+      "PackagePath": "staticwebassets\\css\\borrowing.css"
     },
     {
       "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\css\\style.css",

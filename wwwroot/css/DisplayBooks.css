@@ -1,0 +1,27 @@
+.book-details {
+    display: none;
+    position: fixed;
+    top: 63%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 340px;
+}
+
+.book-details:target {
+    display: block;
+}
+
+.book-item:target + .book-details {
+    display: none;
+}
+
+.book-details img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}

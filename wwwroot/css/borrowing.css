@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+
+.form-container {
+    width: 45%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.spacer {
+    margin-top: 30px;
+}
+
+.table-container {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid black; /* Adding border to table cells */
+}
+thead {
+    background-color: #55608f;
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Alternate row background color */
+}

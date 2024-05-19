@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "jEJg1Zblo78EZL2TRloYNHJvHJiP22xPRbBT8M5vzwk=",
+  "Hash": "mDFnM5tMzbBCqSiF43yau0kIgiUU3CTBmzb+b7TrcAc=",
   "Source": "LibraryManagementSystem",
   "BasePath": "_content/LibraryManagementSystem",
   "Mode": "Default",
@@ -74,6 +74,25 @@
       "OriginalItemSpec": "wwwroot\\css\\adminstyle.css"
     },
     {
+      "Identity": "A:\\ZC\\Library-Management-System\\wwwroot\\css\\borrowing.css",
+      "SourceId": "LibraryManagementSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "A:\\ZC\\Library-Management-System\\wwwroot\\",
+      "BasePath": "_content/LibraryManagementSystem",
+      "RelativePath": "css/borrowing.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\borrowing.css"
+    },
+    {
       "Identity": "A:\\ZC\\Library-Management-System\\wwwroot\\css\\Button.css",
       "SourceId": "LibraryManagementSystem",
       "SourceType": "Discovered",
@@ -91,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\Button.css"
+    },
+    {
+      "Identity": "A:\\ZC\\Library-Management-System\\wwwroot\\css\\DisplayBooks.css",
+      "SourceId": "LibraryManagementSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "A:\\ZC\\Library-Management-System\\wwwroot\\",
+      "BasePath": "_content/LibraryManagementSystem",
+      "RelativePath": "css/DisplayBooks.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\DisplayBooks.css"
     },
     {
       "Identity": "A:\\ZC\\Library-Management-System\\wwwroot\\css\\Navbar.css",
