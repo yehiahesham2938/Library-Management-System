@@ -44,8 +44,43 @@
         </div>
     </div>
     </div>
+
     <div class="container">
-        <button class="button-64" role="button"><span class="text">Add Borrowed Book</span></button>
+        
+            <form id="borrowBookForm" method="post" enctype="multipart/form-data" asp-page-handler="BorrowBook">
+
+                <div class="form-group">
+                    <label for="bookId">Book ID*</label>
+                    <select id="bookId" name="bookId" class="form-control" required>
+                        @foreach (var book in Model.Books)
+                        {
+                            <option value="@book.Id">@book.Id - @book.Title</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="studentName">Student Name*</label>
+                    <input type="text" id="studentName" name="studentName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="studentId">Student ID*</label>
+                    <input type="text" id="studentId" name="studentId" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="studentEmail">Student Email*</label>
+                    <input type="email" id="studentEmail" name="studentEmail" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="borrowDate">Borrow Date*</label>
+                    <input type="date" id="borrowDate" name="borrowDate" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="returnDate">Return Date*</label>
+                    <input type="date" id="returnDate" name="returnDate" class="form-control" required>
+                </div>
+                <button class="button-64" role="button"><span class="text">Add Borrowed Book</span></button>
+            </form>
+        
     </div>
 </body>
 </html>
