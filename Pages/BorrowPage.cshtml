@@ -98,6 +98,8 @@
                     <th>Student Email</th>
                     <th>Borrow Date</th>
                     <th>Return Date</th>
+                    <th>Actions</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -112,12 +114,19 @@
                         <td>@borrowing.StudentEmail</td>
                         <td>@borrowing.BorrowDate.ToShortDateString()</td>
                         <td>@borrowing.ReturnDate.ToShortDateString()</td>
+                        <td>
+                            <div style="display: flex; gap: 10px;">
+                                <button class="btn-returned">Returned</button>
+                                <button class="btn-lost">Lost</button>
+                            </div>
+                        </td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
     </div> 
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 
 </body>
 </html>

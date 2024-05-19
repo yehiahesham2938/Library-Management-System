@@ -87,11 +87,13 @@
                 @foreach (var book in Model.Books)
                 {
                     <li>
-                    <a href="#bookDetails_@book.Id" class="book-item" data-id="@book.Id">@book.Id - @book.Title</a>
+                        <div class="book-item-container" style="gap: 20px;">
+                            <a href="#bookDetails_@book.Id" class="book-item" data-id="@book.Id">@book.Id - @book.Title</a>
                             <form method="post" asp-page-handler="DeleteBook" style="display:inline;">
                                 <input type="hidden" name="id" value="@book.Id" />
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="submit" class="btn-delete">Delete</button>
                             </form>
+                        </div>
                         <div id="bookDetails_@book.Id" class="book-details">
                             <p>Title: @book.Title</p>
                             <p>ISBN: @book.ISBN</p>
@@ -105,11 +107,27 @@
                     </li>
                 }
             </ul>
+
         </div>
     </div>
 
 <style>
+.btn-delete {
+    background-color: #ff0000; 
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+}
 
+.btn-delete:hover {
+    opacity: 0.8;
+}
 </style>
 
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>

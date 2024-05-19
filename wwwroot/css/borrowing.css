@@ -32,7 +32,7 @@ table {
 
 th, td {
     padding: 10px;
-    border: 1px solid black; /* Adding border to table cells */
+    border: 1px solid black; 
 }
 thead {
     background-color: #55608f;
@@ -40,5 +40,35 @@ thead {
 }
 
 tbody tr:nth-child(even) {
-    background-color: #f2f2f2; /* Alternate row background color */
+    background-color: #f2f2f2; 
+}
+
+.btn-returned {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.btn-lost {
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.btn-returned:hover, .btn-lost:hover {
+    opacity: 0.8;
 }
