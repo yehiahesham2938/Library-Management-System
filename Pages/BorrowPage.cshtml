@@ -1,38 +1,70 @@
 @page
-@model LibraryManagementSystem.Pages.BorrowPage
+@model LibraryManagementSystem.Pages.BorrowPageModel
 @{
-    ViewData["Title"] = "BorrowPage";
+    ViewData["Title"] = "Borrow Page";
     Layout = null;
 }
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrow Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/adminstyle.css" />
-    <link rel="stylesheet" href="~/css/Navbar.css" />   
-    <link rel="stylesheet" href="~/css/Button.css"/> 
-    <title> Borrowed Books</title>
+    <link rel="stylesheet" href="~/css/Navbar.css" />
+    <link rel="stylesheet" href="~/css/Button.css"/>
+        <style>
+        .container {
+            display: flex;
+            justify-content: space-between; /* Align items with space between them */
+            align-items: flex-start; /* Align items to the start of the container */
+        }
+
+        .form-container {
+            width: 45%; /* Adjust the width of the form container */
+        }
+
+        .table-container {
+            width: 45%; /* Adjust the width of the table container */
+        }
+
+        .table-responsive {
+            max-height: 80vh; /* Limit the height of the table to ensure it's scrollable */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+
+        /* Adjust styles for better appearance */
+        .form-container, .table-container {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="navbar-container">
-    <div class="navbar">
-        <img src="~/images/ZewailCityLogo.png"  class="img img-responsive img-circle center-block" alt="Logo"> 
-        <div class="navbar-btns">
-            <form method="post" asp-page-handler="HomePagePost">
-                <button class="navbar-btn">Home Page</button>
-            </form>
-            <button class="navbar-btn"> Borrowed Books </button>
-            <form method="post" asp-page-handler="ReturnedBooksPost">
-                <button class="navbar-btn"> Returned Books </button>
-            </form>
-            <form method="post" asp-page-handler="LostBooksPost">
-                <button class="navbar-btn"> Lost Books </button>
-            </form>
-            <a  class="navbar-btn" href="/">Back to Login</a>
-            <h6 style="position: absolute; right: -184px; font-weight: bold;"> Today's Date: </h6>
-                <div id="current_date" style="position: absolute; right: -250px; ">
+        <div class="navbar">
+            <img src="~/images/ZewailCityLogo.png" class="img img-responsive img-circle center-block" alt="Logo">
+            <div class="navbar-btns">
+                <form method="post" asp-page-handler="HomePagePost">
+                    <button class="navbar-btn">Home Page</button>
+                </form>
+                 <form>
+                    <button class="navbar-btn"> Borrowed Books </button>
+                </form>
+                <form method="post" asp-page-handler="ReturnedBooksPost">
+                    <button class="navbar-btn">Returned Books</button>
+                </form>
+                <form method="post" asp-page-handler="LostBooksPost">
+                    <button class="navbar-btn">Lost Books</button>
+                </form>
+                <a class="navbar-btn" href="/">Back to Login</a>
+                <h6 style="position: absolute; right: -184px; font-weight: bold;">Today's Date:</h6>
+                <div id="current_date" style="position: absolute; right: -250px;">
                     <script>
                         date = new Date();
                         year = date.getFullYear();
@@ -41,46 +73,79 @@
                         document.getElementById("current_date").innerHTML = month + "/" + day + "/" + year;
                     </script>
                 </div>
+            </div>
         </div>
-    </div>
     </div>
 
     <div class="container">
         
-            <form id="borrowBookForm" method="post" enctype="multipart/form-data" asp-page-handler="BorrowBook">
+        <form id="borrowBookForm" method="post" enctype="multipart/form-data" asp-page-handler="BorrowBook">
+            <div class="form-group">
+                <label for="bookId">Book ID*</label>
+                <select id="bookId" name="bookId" class="form-control" required>
+                    @await Model.LoadBooksAsync()
+                    @foreach (var book in Model.Books)
+                    {
+                        <option value="@book.Id">@book.Id - @book.Title</option>
+                    }
+                </select>
 
-                <div class="form-group">
-                    <label for="bookId">Book ID*</label>
-                    <select id="bookId" name="bookId" class="form-control" required>
-                        @foreach (var book in Model.Books)
-                        {
-                            <option value="@book.Id">@book.Id - @book.Title</option>
-                        }
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="studentName">Student Name*</label>
-                    <input type="text" id="studentName" name="studentName" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="studentId">Student ID*</label>
-                    <input type="text" id="studentId" name="studentId" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="studentEmail">Student Email*</label>
-                    <input type="email" id="studentEmail" name="studentEmail" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="borrowDate">Borrow Date*</label>
-                    <input type="date" id="borrowDate" name="borrowDate" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="returnDate">Return Date*</label>
-                    <input type="date" id="returnDate" name="returnDate" class="form-control" required>
-                </div>
-                <button class="button-64" role="button"><span class="text">Add Borrowed Book</span></button>
-            </form>
+            </div>
+            <div class="form-group">
+                <label for="studentName">Student Name*</label>
+                <input type="text" id="studentName" name="studentName" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="studentId">Student ID*</label>
+                <input type="text" id="studentId" name="studentId" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="studentEmail">Student Email*</label>
+                <input type="email" id="studentEmail" name="studentEmail" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="borrowDate">Borrow Date*</label>
+                <input type="date" id="borrowDate" name="borrowDate" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="returnDate">Return Date*</label>
+                <input type="date" id="returnDate" name="returnDate" class="form-control" required>
+            </div>
+            <button class="button-64" type = "submit" role="button"><span class="text">Add Borrowed Book</span></button>
+        </form>
         
+    <!-- Display borrowed books -->
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Borrowing Id</th>
+                    <th>Book ID</th>
+                    <th>Student Name</th>
+                    <th>Student ID</th>
+                    <th>Student Email</th>
+                    <th>Borrow Date</th>
+                    <th>Return Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                @foreach (var borrowing in Model.Borrowings)
+                {
+                    <tr>
+                        <td>@borrowing.BorrowingId</td>
+                        <td>@borrowing.BookId</td>
+                        <td>@borrowing.StudentName</td>
+                        <td>@borrowing.StudentId</td>
+                        <td>@borrowing.StudentEmail</td>
+                        <td>@borrowing.BorrowDate.ToShortDateString()</td>
+                        <td>@borrowing.ReturnDate.ToShortDateString()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
+    </div> 
+
 </body>
 </html>

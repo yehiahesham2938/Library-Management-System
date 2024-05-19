@@ -75,43 +75,41 @@ namespace LibraryManagementSystem.Pages
         }
 
         public async Task<IActionResult> OnGetAsync()
-{
-    try
-    {
-        await con.OpenAsync();
-
-        string query = "SELECT BookID, Title, ISBN, Author, PublishedDate, CONVERT(VARCHAR(MAX), Photo, 2) AS Photo FROM Books"; // Convert VARBINARY to VARCHAR(MAX) for Photo
-        using (SqlCommand command = new SqlCommand(query, con))
-        using (SqlDataReader reader = await command.ExecuteReaderAsync())
         {
-            while (await reader.ReadAsync())
+            try
             {
-                // Add the entire Book object to the list
-                Books.Add(new Book
+                await con.OpenAsync();
+
+                string query = "SELECT BookID, Title, ISBN, Author, PublishedDate, CONVERT(VARCHAR(MAX), Photo, 2) AS Photo FROM Books"; // Convert VARBINARY to VARCHAR(MAX) for Photo
+                using (SqlCommand command = new SqlCommand(query, con))
+                using (SqlDataReader reader = await command.ExecuteReaderAsync())
                 {
-                    Id = reader.GetInt32(0),
-                    Title = reader.GetString(1),
-                    ISBN = reader.GetString(2),
-                    Author = reader.GetString(3),
-                    PublishedDate = reader.GetDateTime(4),
-                    // Convert the hexadecimal representation of VARBINARY to byte array
-                    Photo = StringToByteArray(reader.GetString(5))
-                });
+                    while (await reader.ReadAsync())
+                    {
+                        Books.Add(new Book
+                        {
+                            Id = reader.GetInt32(0),
+                            Title = reader.GetString(1),
+                            ISBN = reader.GetString(2),
+                            Author = reader.GetString(3),
+                            PublishedDate = reader.GetDateTime(4),
+                            Photo = StringToByteArray(reader.GetString(5))
+                        });
+                    }
+                }
+
+                return Page();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return Page();
+            }
+            finally
+            {
+                con.Close();
             }
         }
-
-        return Page();
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine(ex.ToString());
-        return Page();
-    }
-    finally
-    {
-        con.Close();
-    }
-}
 
 private byte[] StringToByteArray(string hex)
 {

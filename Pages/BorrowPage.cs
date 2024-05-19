@@ -9,52 +9,112 @@ using Microsoft.AspNetCore.Http;
 
 namespace LibraryManagementSystem.Pages
 {
-    public class BorrowPage : PageModel
-{
-   
+        public class Borrowing
+    {
+        public int BorrowingId { get; set; }
+        public int BookId { get; set; }
+        public  string StudentName { get; set; } = string .Empty;
+        public  int StudentId { get; set; }
+        public  string StudentEmail { get; set; } = string.Empty;
+        public DateTime BorrowDate { get; set; }
+        public DateTime ReturnDate { get; set; }
+        public Borrowing() {}
+    }
+    public class BorrowPageModel : PageModel
+    {
         private readonly string ConnectionString;
         private readonly SqlConnection con;
-        public List<Book> Books { get; private set; } = new List<Book>();
 
-         public BorrowPage()
+        public List<Book> Books { get; private set; } = new List<Book>();
+        public List<Borrowing> Borrowings { get; private set; } = new List<Borrowing>();
+
+        public BorrowPageModel()
         {
-            ConnectionString = "Data Source=YEHIA-HESHAM;Initial Catalog=LibraryManagementSystem;Integrated Security=True";
+            ConnectionString = "Data Source = YEHIA-HESHAM; Initial Catalog = LibraryManagementSystem; Integrated Security = True";
             con = new SqlConnection(ConnectionString);
         }
-        public async Task OnGetAsync()
+
+        public async Task<IActionResult> LoadBooksAsync()
         {
             try
             {
                 await con.OpenAsync();
 
-                string query = "SELECT BookID, Title FROM Books";
-                using (SqlCommand command = new SqlCommand(query, con))
-                using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                string bookQuery = "SELECT BookID, Title FROM Books";
+                using (SqlCommand bookCommand = new SqlCommand(bookQuery, con))
+                using (SqlDataReader bookReader = await bookCommand.ExecuteReaderAsync())
                 {
-                    while (await reader.ReadAsync())
+                    while (await bookReader.ReadAsync())
                     {
                         Books.Add(new Book
                         {
-                            Id = reader.GetInt32(0),
-                            Title = reader.GetString(1)
+                            Id = bookReader.GetInt32(0),
+                            Title = bookReader.GetString(1)
                         });
                     }
                 }
+
+                return Page();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
+                return Page();
             }
             finally
             {
-                await con.CloseAsync();
+                con.Close();
             }
         }
-        public async Task OnPostBorrowBookAsync(int bookId, string studentName, string studentId, string studentEmail, DateTime borrowDate, DateTime returnDate)
+
+        public async Task<IActionResult> OnGetsAsync()
+        {
+        try
+        {
+                await con.OpenAsync();
+
+                string query = "SELECT BorrowingID, BookID, StudentName, StudentID, StudentEmail, BorrowDate, ReturnDate FROM Borrowings";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        Borrowings.Add(new Borrowing
+                        {
+                            BorrowingId = reader.GetInt32(0),
+                            BookId = reader.GetInt32(1),
+                            StudentName = reader.GetString(2),
+                            StudentId = reader.GetInt32(3),
+                            StudentEmail = reader.GetString(4),
+                            BorrowDate = reader.GetDateTime(5),
+                            ReturnDate = reader.GetDateTime(6)
+                        });
+                    }
+                }
+
+                return Page();
+        }
+        catch (Exception ex)
+        {
+                Console.WriteLine(ex.ToString());
+                return Page();
+        }
+        finally
+        {
+                await con.CloseAsync();
+        }
+        }
+
+        public async Task<IActionResult> OnGetAsync()
+        {
+            await OnGetsAsync();
+            return Page();
+        }
+        public async Task<IActionResult> OnPostBorrowBookAsync(int bookId, string studentName, int studentId, string studentEmail, DateTime borrowDate, DateTime returnDate)
         {
             try
             {
-                await con.OpenAsync();
+                con.Open();
 
                 string query = "INSERT INTO Borrowings (BookID, StudentName, StudentID, StudentEmail, BorrowDate, ReturnDate) VALUES (@BookID, @StudentName, @StudentID, @StudentEmail, @BorrowDate, @ReturnDate)";
                 using (SqlCommand command = new SqlCommand(query, con))
@@ -67,30 +127,35 @@ namespace LibraryManagementSystem.Pages
                     command.Parameters.AddWithValue("@ReturnDate", returnDate);
 
                     await command.ExecuteNonQueryAsync();
+                    return RedirectToPage("/BorrowPage");
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
+                return Page();
             }
             finally
             {
-                await con.CloseAsync();
+                con.Close();
             }
+
+        }
+        public IActionResult OnPostHomePagePost()
+        {
+            return RedirectToPage("/Admin");
         }
 
-    public IActionResult OnPostHomePagePost()
-    {
-        return RedirectToPage("/Admin");
+        public IActionResult OnPostReturnedBooksPost()
+        {
+            return RedirectToPage("/ReturnedBooks");
+        }
+
+        public IActionResult OnPostLostBooksPost()
+        {
+            return RedirectToPage("/LostBooks");
+        }
     }
-    public IActionResult OnPostReturnedBooksPost()
-    {
-        return RedirectToPage("/ReturnedBooks");
-    }
-    public IActionResult OnPostLostBooksPost()
-    {
-        return RedirectToPage("/LostBooks");
-    }
-}
+
 
 }
