@@ -124,7 +124,13 @@
                                 <input type="hidden" name="returnDate" value="@borrowing.ReturnDate.ToString("yyyy-MM-dd")" />
                                 <button type="submit" class="btn-returned">Returned</button>
                             </form>
+                            <form method="post" asp-page-handler="LostBook">
+                                <input type="hidden" name="borrowingId" value="@borrowing.BorrowingId" />
+                                <input type="hidden" name="bookId" value="@borrowing.BookId" />
+                                <input type="hidden" name="studentName" value="@borrowing.StudentName" />
+                                <input type="hidden" name="studentId" value="@borrowing.StudentId" />
                                 <button class="btn-lost">Lost</button>
+                            </form>
                             </div>
                         </td>
                     </tr>

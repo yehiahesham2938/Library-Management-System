@@ -75,6 +75,33 @@ namespace LibraryManagementSystem.Pages
             await OnGetsAsync();
             return Page();
         }
+        public async Task<IActionResult> OnPostDeleteBookAsync(int id)
+        {
+            try
+            {
+                await con.OpenAsync();
+                
+                string deleteQuery = "DELETE FROM Returned WHERE ReturnedBookID = @ReturnId";
+                using (SqlCommand deleteCmd = new SqlCommand(deleteQuery, con))
+                {
+                    deleteCmd.Parameters.AddWithValue("@ReturnId", id);
+                    await deleteCmd.ExecuteNonQueryAsync();
+                }
+                
+                return RedirectToPage();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return Page();
+            }
+            finally
+            {
+                await con.CloseAsync();
+            }
+        }
+
+
         public IActionResult OnPostHomePagePost()
         {
             return RedirectToPage("/Admin");

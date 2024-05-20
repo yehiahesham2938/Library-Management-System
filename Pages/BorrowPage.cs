@@ -185,6 +185,44 @@ namespace LibraryManagementSystem.Pages
             }
         }
 
+        public async Task<IActionResult> OnPostLostBookAsync(int borrowingId, int bookId, string studentName, int studentId)
+        {
+            try{
+                await con.OpenAsync();
+                using (SqlTransaction transaction = con.BeginTransaction())
+                {   
+                    string insertQuery = "INSERT INTO Lost (BorrowingID, BookID, StudentName, StudentID)" +
+                                        "VALUES (@BorrowingID, @BookID, @StudentName, @StudentID)";
+
+                    using (SqlCommand cmd = new SqlCommand(insertQuery, con, transaction))
+                    {
+                        cmd.Parameters.AddWithValue("@BorrowingId", borrowingId);
+                        cmd.Parameters.AddWithValue("@BookId", bookId);
+                        cmd.Parameters.AddWithValue("@StudentName", studentName);
+                        cmd.Parameters.AddWithValue("@StudentId", studentId);
+                        await cmd.ExecuteNonQueryAsync();
+                    }            
+                    string deleteQuery = "DELETE FROM Borrowings WHERE BorrowingID = @BorrowingId";
+                    using (SqlCommand deleteCmd = new SqlCommand(deleteQuery, con, transaction))
+                    {
+                        deleteCmd.Parameters.AddWithValue("@BorrowingId", borrowingId);
+                        await deleteCmd.ExecuteNonQueryAsync();
+                    }
+                transaction.Commit();
+                }
+                return RedirectToPage("/LostBooks");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return Page();
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
 
 
 

@@ -58,6 +58,7 @@
                     <th>Student Name</th>
                     <th>Student Id</th>
                     <th>Return Date</th>
+                    <th> Action </th>
                 </tr>
             </thead>
             <tbody>
@@ -70,6 +71,12 @@
                     <td> @returned.StudentName</td>
                     <td> @returned.StudentId</td>
                     <td> @returned.ReturnDate.ToShortDateString()</td>
+                    <td>
+                    <form method="post" asp-page-handler="DeleteBook" style="display:inline;">
+                    <input type="hidden" name="id" value="@returned.ReturnId" />
+                    <button type="submit" class="btn-delete">Delete</button>
+                    </form>
+                    </td>
                 </tr>
                 }
 

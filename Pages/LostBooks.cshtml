@@ -46,6 +46,41 @@
         </div>
     </div>
     </div>
+    <div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Lost Book ID</th>
+                <th>Borrowing ID</th>
+                <th>Book ID</th>
+                <th>Student Name</th>
+                <th>Student ID</th>
+                <th> Action </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var lost in Model.Losts)
+            {
+            <tr>
+                <td>@lost.LostBookId</td>
+                <td>@lost.BorrowingId</td>
+                <td>@lost.BookId</td>
+                <td>@lost.StudentName</td>
+                <td>@lost.StudentId</td>
+                <td>
+                    <form method="post" asp-page-handler="DeleteBook" style="display:inline;">
+                    <input type="hidden" name="id" value="@lost.LostBookId" />
+                    <button type="submit" class="btn-delete">Delete</button>
+                    </form>
+                </td>
+                
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
     
 </body>
 </html>
