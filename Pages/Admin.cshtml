@@ -16,12 +16,12 @@
     <title>Library Management System</title>
 
 </head>
-<body>
+<body style="background-color: #3e94ec;">
     <div class="navbar-container">
         <div class="navbar">
             <img src="~/images/ZewailCityLogo.png"  class="img img-responsive img-circle center-block" alt="Logo"> 
             <div class="navbar-btns">
-                <form method="post" asp-page-handler="HomePagePost">
+                <form>
                     <button class="navbar-btn">Home Page</button>
                 </form>
                 <form method="post" asp-page-handler="BorrowPagePost">
@@ -128,6 +128,85 @@
 .btn-delete:hover {
     opacity: 0.8;
 }
+
+
+
+.container {
+    display: flex;
+    background-color: #3e94ec;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 50px;
+    
+}
+.section {
+    flex: 1;
+    margin: 0 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.section h2 {
+    text-align: center;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+.form-group input[type="text"],
+.form-group input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+.form-group input[type="file"] {
+    margin-top: 5px;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.book-item-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.book-item {
+    margin-right: 10px;
+    color: #181818; 
+    text-decoration: none;
+}
+
+.book-item:hover {
+    text-decoration: underline;
+}
+
+.book-details {
+    display: none;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.book-item-container:hover .book-details {
+    display: block;
+}
+
 </style>
 
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>

@@ -1,9 +1,7 @@
-body {
-    font-family: Arial, sans-serif;
-}
 
 .container {
     display: flex;
+    background-color: #3e94ec;
     flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 50px;

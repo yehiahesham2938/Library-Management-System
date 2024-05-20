@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\css\\Navbar.css"
     },
     {
+      "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\css\\Table.css",
+      "PackagePath": "staticwebassets\\css\\Table.css"
+    },
+    {
       "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\css\\adminstyle.css",
       "PackagePath": "staticwebassets\\css\\adminstyle.css"
     },
@@ -39,6 +43,58 @@
     {
       "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\images\\BackgroundLibrary.jpg",
       "PackagePath": "staticwebassets\\images\\BackgroundLibrary.jpg"
+    },
+    {
+      "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\images\\BooksCovers\\A Game Of Thrones.jpg",
+      "PackagePath": "staticwebassets\\images\\BooksCovers\\A Game Of Thrones.jpg"
+    },
+    {
+      "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\images\\BooksCovers\\Azemia.jpg",
+      "PackagePath": "staticwebassets\\images\\BooksCovers\\Azemia.jpg"
+    },
+    {
+      "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\images\\BooksCovers\\Besa a las mujeres.jpg",
+      "PackagePath": "staticwebassets\\images\\BooksCovers\\Besa a las mujeres.jpg"
+    },
+    {
+      "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\images\\BooksCovers\\Darkstalker(Wingso-of-Fire Legends).jpg",
+      "PackagePath": "staticwebassets\\images\\BooksCovers\\Darkstalker(Wingso-of-Fire Legends).jpg"
+    },
+    {
+      "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\images\\BooksCovers\\Ice breaker.jpg",
+      "PackagePath": "staticwebassets\\images\\BooksCovers\\Ice breaker.jpg"
+    },
+    {
+      "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\images\\BooksCovers\\Isaac Asimov's robot city.jpg",
+      "PackagePath": "staticwebassets\\images\\BooksCovers\\Isaac Asimov's robot city.jpg"
+    },
+    {
+      "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\images\\BooksCovers\\Living with contradiction.jpg",
+      "PackagePath": "staticwebassets\\images\\BooksCovers\\Living with contradiction.jpg"
+    },
+    {
+      "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\images\\BooksCovers\\The Dark Tower VII.jpg",
+      "PackagePath": "staticwebassets\\images\\BooksCovers\\The Dark Tower VII.jpg"
+    },
+    {
+      "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\images\\BooksCovers\\The Last Four Things.jpg",
+      "PackagePath": "staticwebassets\\images\\BooksCovers\\The Last Four Things.jpg"
+    },
+    {
+      "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\images\\BooksCovers\\The Past Is Rising.jpg",
+      "PackagePath": "staticwebassets\\images\\BooksCovers\\The Past Is Rising.jpg"
+    },
+    {
+      "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\images\\BooksCovers\\The Spy Paramount.jpg",
+      "PackagePath": "staticwebassets\\images\\BooksCovers\\The Spy Paramount.jpg"
+    },
+    {
+      "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\images\\BooksCovers\\The man in the iron mask.jpg",
+      "PackagePath": "staticwebassets\\images\\BooksCovers\\The man in the iron mask.jpg"
+    },
+    {
+      "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\images\\BooksCovers\\The slang of sin.jpg",
+      "PackagePath": "staticwebassets\\images\\BooksCovers\\The slang of sin.jpg"
     },
     {
       "Id": "A:\\ZC\\Library-Management-System\\wwwroot\\images\\ZewailCityLogo.png",

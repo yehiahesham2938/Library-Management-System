@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="~/css/borrowing.css" />
     <link rel="stylesheet" href="~/css/Navbar.css" />  
     <link rel="stylesheet" href="~/css/Button.css"/> 
+    <link rel="stylesheet" href="~/css/Table.css" />  
 
     <title> Returned Books</title>
   
@@ -34,7 +35,7 @@
                 <button class="navbar-btn"> Lost Books </button>
             </form>
             <a  class="navbar-btn" href="/">Back to Login</a>
-            <h6 style="position: absolute; right: -184px; font-weight: bold;"> Today's Date: </h6>
+            <h6 style="position: absolute; right: -170px; font-weight: bold;"> Today's Date: </h6>
                 <div id="current_date" style="position: absolute; right: -250px; ">
                     <script>
                         date = new Date();
@@ -48,8 +49,7 @@
     </div>
     </div>
 
-    <div class="table-responsive">
-        <table class="table table-striped">
+        <table class="table-fill">
             <thead>
                 <tr>
                     <th>Return Id</th>
@@ -61,20 +61,20 @@
                     <th> Action </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-hover">
                 @foreach (var returned in Model.Returneds)
                 {
                 <tr>
-                    <td> @returned.ReturnId </td>
-                    <td> @returned.BorrowingId</td>
-                    <td> @returned.BookId</td>
-                    <td> @returned.StudentName</td>
-                    <td> @returned.StudentId</td>
-                    <td> @returned.ReturnDate.ToShortDateString()</td>
-                    <td>
+                    <td class="text-left"> @returned.ReturnId </td>
+                    <td class="text-left"> @returned.BorrowingId</td>
+                    <td class="text-left"> @returned.BookId</td>
+                    <td class="text-left"> @returned.StudentName</td>
+                    <td class="text-left"> @returned.StudentId</td>
+                    <td class="text-left"> @returned.ReturnDate.ToShortDateString()</td>
+                    <td class="text-left">
                     <form method="post" asp-page-handler="DeleteBook" style="display:inline;">
                     <input type="hidden" name="id" value="@returned.ReturnId" />
-                    <button type="submit" class="btn-delete">Delete</button>
+                    <button type="submit" class="btn-lost">Delete</button>
                     </form>
                     </td>
                 </tr>
@@ -83,6 +83,5 @@
 
             </tbody>
         </table>
-    </div>
 </body>
 </html>

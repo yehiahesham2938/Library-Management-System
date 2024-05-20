@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="~/css/adminstyle.css" />
     <link rel="stylesheet" href="~/css/borrowing.css" />
     <link rel="stylesheet" href="~/css/Navbar.css" />
+    <link rel="stylesheet" href="~/css/Table.css" />
+
     <link rel="stylesheet" href="~/css/Button.css"/>
     
 </head>
@@ -36,7 +38,7 @@
                     <button class="navbar-btn">Lost Books</button>
                 </form>
                 <a class="navbar-btn" href="/">Back to Login</a>
-                <h6 style="position: absolute; right: -184px; font-weight: bold;">Today's Date:</h6>
+                <h6 style="position: absolute; right: -170px; font-weight: bold;">Today's Date:</h6>
                 <div id="current_date" style="position: absolute; right: -250px;">
                     <script>
                         date = new Date();
@@ -87,8 +89,7 @@
             <button class="button-64" type = "submit" role="button"><span class="text">Add Borrowed Book</span></button>
         </form>
         <div class="spacer"></div>
-    <div class="table-responsive">
-        <table class="table table-striped">
+        <table class="table-fill">
             <thead>
                 <tr>
                     <th>Borrowing Id</th>
@@ -102,19 +103,19 @@
 
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-hover">
                 
                 @foreach (var borrowing in Model.Borrowings)
                 {
                     <tr>
-                        <td>@borrowing.BorrowingId</td>
-                        <td>@borrowing.BookId</td>
-                        <td>@borrowing.StudentName</td>
-                        <td>@borrowing.StudentId</td>
-                        <td>@borrowing.StudentEmail</td>
-                        <td>@borrowing.BorrowDate.ToShortDateString()</td>
-                        <td>@borrowing.ReturnDate.ToShortDateString()</td>
-                        <td>
+                        <td class="text-left">@borrowing.BorrowingId</td>
+                        <td class="text-left">@borrowing.BookId</td>
+                        <td class="text-left">@borrowing.StudentName</td>
+                        <td class="text-left">@borrowing.StudentId</td>
+                        <td class="text-left">@borrowing.StudentEmail</td>
+                        <td class="text-left">@borrowing.BorrowDate.ToShortDateString()</td>
+                        <td class="text-left">@borrowing.ReturnDate.ToShortDateString()</td>
+                        <td class="text-left">
                             <div style="display: flex; gap: 10px;">
                             <form method="post" asp-page-handler="ReturnedBook">
                                 <input type="hidden" name="borrowingId" value="@borrowing.BorrowingId" />
@@ -138,7 +139,26 @@
             </tbody>
         </table>
     </div>
-    </div> 
+    <style>
+            .table-fill {
+    background: white;
+    border-radius: 3px;
+    border-collapse: collapse;
+    height: 240px;
+    margin: auto;
+    max-width: 400px; 
+    padding: 5px; 
+    width: 100%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    animation: float 5s infinite;
+    }
+
+    th,
+    td {
+    font-size: 14px;
+    }
+
+    </style>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 
 </body>
