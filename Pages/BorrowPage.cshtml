@@ -116,7 +116,14 @@
                         <td>@borrowing.ReturnDate.ToShortDateString()</td>
                         <td>
                             <div style="display: flex; gap: 10px;">
-                                <button class="btn-returned">Returned</button>
+                            <form method="post" asp-page-handler="ReturnedBook">
+                                <input type="hidden" name="borrowingId" value="@borrowing.BorrowingId" />
+                                <input type="hidden" name="bookId" value="@borrowing.BookId" />
+                                <input type="hidden" name="studentName" value="@borrowing.StudentName" />
+                                <input type="hidden" name="studentId" value="@borrowing.StudentId" />
+                                <input type="hidden" name="returnDate" value="@borrowing.ReturnDate.ToString("yyyy-MM-dd")" />
+                                <button type="submit" class="btn-returned">Returned</button>
+                            </form>
                                 <button class="btn-lost">Lost</button>
                             </div>
                         </td>

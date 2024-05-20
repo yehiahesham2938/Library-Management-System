@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using System.Transactions;
 
 namespace LibraryManagementSystem.Pages
 {
@@ -141,6 +142,53 @@ namespace LibraryManagementSystem.Pages
             }
 
         }
+
+        public async Task<IActionResult> OnPostReturnedBookAsync(int borrowingId, int bookId, string studentName, int studentId, DateTime returnDate)
+        {
+            try
+            {
+                await con.OpenAsync();
+                    using (SqlTransaction transaction = con.BeginTransaction())
+                {   
+                    string insertQuery = "INSERT INTO Returned (BorrowingID, BookID, StudentName, StudentID, ReturnDate) " +
+                                        "VALUES (@BorrowingId, @BookId, @StudentName, @StudentId, @ReturnDate)";
+
+                    using (SqlCommand cmd = new SqlCommand(insertQuery, con, transaction))
+                    {
+                        cmd.Parameters.AddWithValue("@BorrowingId", borrowingId);
+                        cmd.Parameters.AddWithValue("@BookId", bookId);
+                        cmd.Parameters.AddWithValue("@StudentName", studentName);
+                        cmd.Parameters.AddWithValue("@StudentId", studentId);
+                        cmd.Parameters.AddWithValue("@ReturnDate", returnDate);
+                        await cmd.ExecuteNonQueryAsync();
+                    }
+
+                    string deleteQuery = "DELETE FROM Borrowings WHERE BorrowingID = @BorrowingId";
+                    using (SqlCommand deleteCmd = new SqlCommand(deleteQuery, con, transaction))
+                    {
+                        deleteCmd.Parameters.AddWithValue("@BorrowingId", borrowingId);
+                        await deleteCmd.ExecuteNonQueryAsync();
+                    }
+                transaction.Commit();
+                }
+
+                return RedirectToPage("/ReturnedBooks");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return Page();
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+
+
+
+
         public IActionResult OnPostHomePagePost()
         {
             return RedirectToPage("/Admin");

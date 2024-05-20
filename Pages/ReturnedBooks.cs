@@ -1,31 +1,93 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Threading.Tasks;
 
-namespace LibraryManagementSystem.Pages;
-public class ReturnedBooks : PageModel
+namespace LibraryManagementSystem.Pages
 {
-    private readonly ILogger<StudentModel> _logger;
+    public class ReturnedBook
+    {
+        public int ReturnId { get; set; }
 
-    public ReturnedBooks(ILogger<StudentModel> logger)
-    {
-        _logger = logger;
+        public int BorrowingId { get; set; }
+        public int BookId { get; set; }
+        public string StudentName { get; set; } = string.Empty;
+        public int StudentId { get; set; }
+        public DateTime ReturnDate { get; set; }
+        public ReturnedBook(){ }
     }
 
-    public void OnGet()
+    public class ReturnedBooksModel : PageModel
     {
-    }
-    public IActionResult OnPostHomePagePost()
-    {
-        return RedirectToPage("/Admin");
-    }
-    public IActionResult OnPostBorrowPagePost()
-    {
-        return RedirectToPage("/BorrowPage");
-    }
-    public IActionResult OnPostLostBooksPost()
-    {
-        return RedirectToPage("/LostBooks");
+        private readonly string ConnectionString;
+        private readonly SqlConnection con;
+
+        public ReturnedBooksModel()
+        {
+            ConnectionString = "Data Source = YEHIA-HESHAM; Initial Catalog = LibraryManagementSystem; Integrated Security = True";
+            con = new SqlConnection(ConnectionString);
+        }
+
+
+        public List<ReturnedBook> Returneds { get; private set; } = new List<ReturnedBook>();
+
+        
+        public async Task<IActionResult> OnGetsAsync()
+        {
+        try
+        {
+            await con.OpenAsync();
+            string query = " SELECT ReturnedBookID, BorrowingID, BookID, StudentName, StudentID , ReturnDate FROM Returned";
+            using (SqlCommand command = new SqlCommand(query, con))
+            using (SqlDataReader reader = await command.ExecuteReaderAsync())
+            {
+                while (await reader.ReadAsync())
+                {
+                    Returneds.Add(new ReturnedBook
+                    {
+                        ReturnId = reader.GetInt32(0),
+                        BorrowingId = reader.GetInt32(1),
+                        BookId = reader.GetInt32(2),
+                        StudentName = reader.GetString(3),
+                        StudentId = reader.GetInt32(4),
+                        ReturnDate = reader.GetDateTime(5)
+
+                    });
+                }
+            }
+            return Page();
+
+        }
+        catch (Exception ex)
+        {
+                Console.WriteLine(ex.ToString());
+                return Page();
+        }
+        finally
+        {
+                await con.CloseAsync();
+        }
+        }
+        public async Task<IActionResult> OnGetAsync()
+        {
+            await OnGetsAsync();
+            return Page();
+        }
+        public IActionResult OnPostHomePagePost()
+        {
+            return RedirectToPage("/Admin");
+        }
+
+        public IActionResult OnPostBorrowPagePost()
+        {
+            return RedirectToPage("/BorrowPage");
+        }
+
+        public IActionResult OnPostLostBooksPost()
+        {
+            return RedirectToPage("/LostBooks");
+        }
     }
 }
-

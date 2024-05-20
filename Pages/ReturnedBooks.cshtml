@@ -1,5 +1,5 @@
 @page
-@model LibraryManagementSystem.Pages.ReturnedBooks
+@model LibraryManagementSystem.Pages.ReturnedBooksModel
 @{
     ViewData["Title"] = "ReturnedBooks";
     Layout = null;
@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/adminstyle.css" />
+    <link rel="stylesheet" href="~/css/borrowing.css" />
     <link rel="stylesheet" href="~/css/Navbar.css" />  
     <link rel="stylesheet" href="~/css/Button.css"/> 
 
@@ -46,8 +47,35 @@
         </div>
     </div>
     </div>
-<div class="container">
-    <button class="button-64" role="button"><span class="text">Add Returned Book</span></button>
-</div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Return Id</th>
+                    <th>Borrowing Id</th>
+                    <th>Book Id</th>
+                    <th>Student Name</th>
+                    <th>Student Id</th>
+                    <th>Return Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var returned in Model.Returneds)
+                {
+                <tr>
+                    <td> @returned.ReturnId </td>
+                    <td> @returned.BorrowingId</td>
+                    <td> @returned.BookId</td>
+                    <td> @returned.StudentName</td>
+                    <td> @returned.StudentId</td>
+                    <td> @returned.ReturnDate.ToShortDateString()</td>
+                </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
