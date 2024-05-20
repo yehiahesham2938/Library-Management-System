@@ -50,7 +50,7 @@
 
     <div class="container">
         <div class="section">
-            <h2>Insert Book</h2>
+            <h2><strong>Insert Book</strong></h2>
             <form id="insertBookForm" method="post" enctype="multipart/form-data" asp-page-handler="InsertBook">
                 <div class="form-group">
                     <label for="title">Book Title*</label>
@@ -76,13 +76,13 @@
             </form>
         </div>
         <div class="section">
-            <h2>View Books</h2>
+            <h2><strong> View Books</strong></h2>
             <ul id="existingBooksList">
                 
             </ul>
         </div>
        <div class="section">
-            <h2>Books List</h2>
+            <h2> <strong> Books List </strong></h2>
             <ul id="bookslist">
                 @foreach (var book in Model.Books)
                 {
@@ -95,10 +95,10 @@
                             </form>
                         </div>
                         <div id="bookDetails_@book.Id" class="book-details">
-                            <p>Title: @book.Title</p>
-                            <p>ISBN: @book.ISBN</p>
-                            <p>Author's Name: @book.Author</p>
-                            <p>Published Date: @book.PublishedDate.ToShortDateString()</p>
+                            <p><strong>Title: </strong> @book.Title</p>
+                            <p><strong>ISBN: </strong> @book.ISBN</p>
+                            <p><strong>Author's Name: </strong> @book.Author</p>
+                            <p><strong>Published Date: </strong> @book.PublishedDate.ToShortDateString()</p>
                             @if (book.Photo != null)
                             {
                                 <img src="data:image;base64,@Convert.ToBase64String(book.Photo)" alt="Book Photo" />

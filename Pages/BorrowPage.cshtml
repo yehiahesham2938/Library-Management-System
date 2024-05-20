@@ -86,7 +86,11 @@
                 <label for="returnDate">Return Date*</label>
                 <input type="date" id="returnDate" name="returnDate" class="form-control" required>
             </div>
-            <button class="button-64" type = "submit" role="button"><span class="text">Add Borrowed Book</span></button>
+            <div class="button-container">
+                <button class="button-64" type="submit" role="button">
+                    <span class="text">Add Borrowed Book</span>
+                </button>
+            </div>
         </form>
         <div class="spacer"></div>
         <table class="table-fill">
@@ -152,6 +156,13 @@
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     animation: float 5s infinite;
     }
+    .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-top: 20px; 
+}
+
 
     th,
     td {

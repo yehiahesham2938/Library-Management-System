@@ -1,9 +1,9 @@
 .book-details {
     display: none;
     position: fixed;
-    top: 63%;
+    top: 10px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -30%);
     padding: 10px;
     background-color: white;
     border: 1px solid #ccc;
@@ -22,6 +22,8 @@
 
 .book-details img {
     max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
+    height: 95%;
+    top:50px;
+    margin-bottom: 30px;
+    margin-top: 90px;;
 }
